@@ -1,0 +1,212 @@
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 1.5em;
+	text-align: center;
+	color: black;
+	
+	background-image: url('images/background.png');
+}
+
+
+a:link, a:visited {
+	color: #c30;
+}
+
+
+/* ---------------------------------------------------- */
+/* Major Navigational Containers                        */
+/* ---------------------------------------------------- */
+
+#container {
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+    margin-top: 34px;
+	margin-bottom: 50px;
+	width: 750px;
+	padding: 0px;
+	border: 2px solid black;
+	background-color: #fff;
+}
+
+
+#header {
+	margin: 5px;
+	padding: 0px;
+	width: 740px;
+	
+}
+
+#courseheader{
+
+    margin: 5px;
+	padding-top: 10px;
+	padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+	width: 720px;
+
+}
+
+#tweetspace {
+	border: 2px solid #ccc;
+	background-color: #FFF;
+	
+}
+#tut{
+	padding-top: 25px;
+	padding-bottom: 20px;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+#content {
+	margin: 5px;
+	padding-top: 10px;
+	padding-left: 10px;
+        padding-bottom: 10px;
+        padding-right: 20px;
+	border-right: 2px solid #ccc;
+	width: 455px;
+	
+}
+
+#coursecontent {
+	margin: 5px;
+	padding-top: 10px;
+	padding-left: 10px;
+        padding-bottom: 10px;
+        padding-right: 20px;
+	width: 720px;
+}
+
+#right {
+	float: right;
+	margin: 5px;
+	padding: 10px;
+	width: 230px;
+	margin-bottom: 60px;
+	
+}
+
+
+#footer {
+	margin: 5px;
+	padding: 10px;
+	border-top: 1px solid #ccc;
+	height: 25px;
+	width: 720px;
+}
+
+
+
+/* ---------------------------------------------------- */
+/* Individual Element Properties                       */
+/* ---------------------------------------------------- */
+hr {
+    
+    Color: #ccc;
+    margin-top: 15px;
+    width: 200px;
+}
+
+#content h1 {
+	font-size:16px;
+}
+
+#content a:link, #content a:visited {
+	text-decoration: none;
+}
+
+#coursecontent h1 {
+	       font-size:25px;
+	       padding-top:25px;
+	       padding-bottom:15px;
+	       border-top: 1px solid #ccc;
+}
+
+
+#info {
+	margin: 0px;
+	padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 0px;
+        padding-right: 0px;	
+}
+
+#info li {
+	display: inline;
+	padding: 0px;
+	margin-right: 15px;
+      
+}
+
+#info a:link, a:visited {
+	text-decoration: none;
+}
+
+#info em {
+	font-style: normal;
+	font-weight: bold;	
+}
+
+#nav {
+	margin: 0px;
+	padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 0px;
+	border-top: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+	
+}
+
+#nav li {
+	display: inline;
+	padding: 0px;
+	margin-right: 15px;
+	margin-left: 20px;
+      
+}
+
+#nav a:link, #nav a:visited{
+	text-decoration: none;
+	font-size: 14px;
+}
+
+#title {
+	
+	height: 140px;
+	margin-left: 20px;
+	border: 1px solid white;
+}
+
+#title h1 {
+        font-size: 28px;
+		margin-top: 5px;
+		
+}
+
+#title h2 {
+	font-size: 16px;
+}
+
+#title a:link, #title a:visited {
+
+	text-decoration: none;
+}
+
+
+li.title {
+	font-weight: bold;
+}
+
+
+span.bibem {
+	font-weight: bold;
+	font-size: 12px;
+}
