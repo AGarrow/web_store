@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"> 
+
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  
+	<head>
+	<meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	
+	<title>Welcome to Online Store</title>
+	 
+	<link href="login-box.css" rel="stylesheet" type="text/css" />
+
+	<style type="text/css" media="screen">
+	 body {background-image: url('background.png');}
+	 a:hover  { color: #999999; text-decoration: none; }
+	 #main    { position: relative; 
+				background-color: white;
+				padding: 40px;
+				border-style: solid;
+				border-width: 0px;
+				border-color: #e3e3e3;
+				width: 750px; 
+				text-align: left;
+				box-shadow: 1px 1px 20px #505050;
+				margin: 35px auto; }
+	 ul
+		{
+		float:left;
+		width:100%;
+		padding:0;
+		margin:0;
+		list-style-type:none;
+		
+		}
+	 a 
+		{
+		width:6em;
+		text-decoration:none;
+		color:white;	
+		}
+	 li {display:inline;}  
+	 
+	</style>
+
+</head>
+
+<body>
+<div id="body">
+	 <div align="center">	
+
+	 <div id="main">
+	 
+	 <div style="width:100%; font-family: arial, sans-serif: 12pt;" align="center">	
+		 <div style="width: 750px; color: #000000; text-align: left;" align="left;" >
+		
+			 <div align="center">
+				 <!-- Here is login box -->
+				 <div id="login-box">
+					 <form action="cgi-bin/login.cgi" method="post">
+					 <h2>Login</h2>
+					 <div id="login-box-name" style="margin-top:20px;">Username:</div><div id="login-box-field" style="margin-top:20px;"><input name="username" class="form-login" title="Username" value="" size="30" maxlength="2048" /></div>
+					 <div id="login-box-name">Password:</div><div id="login-box-field" style="margin-bottom: 25px"><input name="pwd" type="password" class="form-login" title="Password" value="" size="30" maxlength="2048" /></div>
+					 <br />
+					 <div style="margin-right: 18px;">
+					 <input type="submit" value="Login" style="width: 103 px; height: 42px; float: right; margin-right: 6px;"  />
+                     <div style="text-align:center">
+					 <form>
+					 <input type="BUTTON" value="Register" style="width: 103 px; height: 42px; float: right;" ONCLICK="window.location.href='register.html'">
+					 </form>		 				 
+                     </div> 
+					 </div>
+					         <div style="padding-left: 155px;">
+							 <b>Login Failed.</b> Try again. 
+							 </div>	
+					 </form>
+				 </div>
+				
+				 <!-- Here is the footer menu -->
+				<div style="padding-top: 60px; padding-bottom: 70px;" align="center">			
+					<ul>
+						<li style="background-color:#ff8800;padding:20px;margin-right:20px"><a href="index.html"><b>Welcome</b></a></li>
+						<li style="background-color:#ff8800;padding: 20px 25px 20px 25px;margin-right:20px"><a href="credits.html" target="_blank"><b>Credits</b></a></li>
+						<li style="background-color:#ff8800;padding: 20px 30px 20px 30px;"><a href="login.html"><b>Login</b></a></li>
+					</ul>
+				</div>
+			 </div>
+		 </div>
+	 </div>
+	 </div>
+</div>
+
+</body>
+</html>
