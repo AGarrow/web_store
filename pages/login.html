@@ -1,0 +1,51 @@
+<!-- 
+**
+** Login.html: This page has a simple form that takes input (username, password),
+** then POSTs this information to login.cgi, which will validate it in a local
+** file called members.csv and proceed further.
+**
+-->
+
+
+<html>
+  
+  <head>
+    <link href = "./css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href = "./css/custom.css" media = "all" rel="stylesheet" type="text/css" href="">
+    <title>Sample Login Page</title>
+  </head>
+  
+  <body>
+    <header class ="navbar navbar-fixed-top">
+    <div class = "navbar-inner">
+      <nav>
+        <ul class = "nav pull-left">
+          <li><a href="home.html">HOME<i class="icon-home"></i></a></li>
+        </ul>
+        <ul class = "nav pull-right">
+          <li><a href="catalogue.html">Catalogue</a></li>
+          <li><a href="login.html" target="_blank">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+    
+    <div class="span4 well" id="login" style="float:none; margin:0 auto;"> 
+          <h2>Login</h2>
+
+            <!-- This is the login form -->
+              <form method="POST" action="login.cgi">
+              
+                <p>Please enter your username and password:</p>
+                <input type="text" placeholder="username"name="username"> <br/>
+                <input type="text" placeholder="password" name="password"> <br/>
+                <input class = "btn btn-large btn-primary btn-block"type="submit" value="Submit!">
+              
+              </form>
+
+
+    </div>
+
+  </body>
+
+</html>
