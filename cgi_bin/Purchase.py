@@ -1,9 +1,17 @@
-#!/usr/local/bin/python
+#!/usr/bin/python
 import cgi
 import os
 
 username
 password
+
+print "Content-type: text/html\n\n"
+print "<html>"
+if checkAccount():
+	print "hello "+username
+else
+	print "username and password do not match"
+print "</html>"
 
 def checkAccount():
 	fn = os.path.join(os.path.dirname(__file__), 'databases/Inventory.csv')
@@ -18,14 +26,4 @@ def checkAccount():
 		if line[0] == username & line[1] == password
 			return true
 	return false
-
-print "Content-type: text/html"
-print "<html>"
-if checkAccount():
-	print "hello "+username
-else
-	print "username and password do not match"
-print "</html>"
-
-
 	
