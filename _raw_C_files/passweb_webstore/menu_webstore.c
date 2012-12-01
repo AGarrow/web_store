@@ -93,13 +93,8 @@ void menuPrompt()
 			
 			gets(password);
 
-			result = verifyDB(username,password);
+			verifyDB(username,password);
 			
-			if (result == 0)
-				printf("EXIT_FAILURE\n");
-
-			if (result == 1)
-				printf("EXIT_SUCCESS\n");
 		}
 		
 		//User is exiting the menu interface
@@ -113,7 +108,7 @@ void menuPrompt()
 //menuPrompt() above...
 
 //Verify function (username and password)
-int verifyDB (char username[15], char password[15])
+void verifyDB (char username[15], char password[15])
     {
 
 		            FILE *fp;
@@ -139,11 +134,6 @@ int verifyDB (char username[15], char password[15])
 
                 fclose(fp);
 
-                if (usernameFound ==  0)
-                        return 0;
-
-                else if (usernameFound == 1)
-                        return 1;
 }
 
 //Verify helper function (only username, used in add,edit,del)
@@ -213,7 +203,6 @@ void addDB (char username[15], char password[15], char type[15])
 
         fclose(fp);
 
-        printf("Success.\n");
     }
 }
 
@@ -225,7 +214,6 @@ void delDB (char username[15])
 
                 if (result == 0)
                 {
-                        printf("The username does not exist - cannot delete. Please try again.\n");
                 }
 
                 if (result == 1)
@@ -267,7 +255,6 @@ void delDB (char username[15])
 
                         fclose(fp);
 
-                        printf("Success\n");
                 }
 
         }
@@ -280,7 +267,6 @@ void editDB (char username[15], char password[15],char type[15],char user_2[15],
 
                 if (result == 0)
                 {
-                        printf("The username does not exist - cannot edit. Please try again.\n");
                 }
 
                 if (result == 1)

@@ -77,7 +77,28 @@ int main() {
 
   //Access passweb.csv
   else if (input =='2'){
-   
+  
+    printf("<html><head><title>PASSWEB.C ACCESS:</title></head>\n"); 
+    printf("<body><p>Access all of passweb.c's functionality here:</p>\n");
+    printf("<form method=\"POST\" action=\"passweb.cgi\">\n");
+    printf("<pChoose a passweb.c function, then enter the required information in the fields below:</p>\n");
+    printf("Verify (enter an existing username and password): <input type =\"radio\" name=\"option\" value=\"0\"><br>\n");
+    printf("Add (enter a new username, password, type (USER or SYSTEM)): <input type =\"radio\" name=\"option\" value=\"1\"><br>\n");
+    printf("Edit (enter an old username and password,type,then new u/n, pass and type): <input type =\"radio\" name=\"option\" value=\"2\"><br>\n");
+    printf("Delete (enter username to delete): <input type =\"radio\" name=\"option\" value=\"3\"><br><br>\n");
+    printf("Please fill in the required fields for the option you selected:<br><br>\n");
+    printf("For delete, verify, add, use the first, first 2, or first 3 fields (respectively).<br><br>");
+    printf("Username: <input type =\"text\" name=\"user1\"><br>\n");
+    printf("Password:<input type =\"password\" name=\"oldpass\"><br>\n");
+    printf("Type:<input type =\"text\" name=\"type1\"><br>\n");
+    printf("New Username: <input type =\"text\" name=\"user2\"><br>\n");
+    printf("New Password:<input type =\"password\" name=\"newpass\"><br>\n");
+    printf("New Type:<input type =\"text\" name=\"type2\"><br>\n");
+    printf("<input type =\"submit\" value=\"Submit!\"><br>\n");  
+    printf("<br>"); 
+    printf("<a href=\"../Home.html\">Home</a>   ");
+    printf("<a href=\"javascript:history.back()\">Go back to menu.</a>");
+    printf("</body></html>");
   }
 
   //Access Inventory

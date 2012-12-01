@@ -147,13 +147,8 @@ int main(int argc, char *argv[])
 	{
 		int result;
 		
-		result = verifyDB(username,password);
+		verifyDB(username,password);
 
-		if (result == 1)
-			printf("EXIT_SUCCESS\n");
-
-		if (result == 0)
-			printf("EXIT_FAILURE\n");
 
 	}
 
