@@ -52,7 +52,7 @@ int main() {
     int counter = 0;
     ssize_t read;
 
-    fp = fopen("log.csv", "r");
+    fp = fopen("../databases/log.csv", "r");
 
     //Print each line in file log.csv
     while ( (read = getline(&line,&len,fp)) != -1  && counter < 50){
@@ -64,7 +64,7 @@ int main() {
 
    fclose(fp);
 
-   printf("<a href=\"index.html\">Home</a>   ");
+   printf("<a href=\"../home.html\">Home</a>   ");
    printf("<a href=\"javascript:history.back()\">Go back to menu.</a>");
    printf("</body></html>");
   }
@@ -77,7 +77,7 @@ int main() {
   else {
     
     printf("<html><head><title>Inventory</title></head>\n");
-    printf("<body><p>Store Inventory: (log.csv) </p>\n");
+    printf("<body><p>Store Inventory: (Inventory.csv) </p>\n");
     
     FILE *fp;
     char *line = NULL;
@@ -85,7 +85,7 @@ int main() {
     int counter = 0;
     ssize_t read;
 
-    fp = fopen("inventory.csv", "r");
+    fp = fopen("../databases/Inventory.csv", "r");
 
     //Print each line in file inventory.csv
     while ( (read = getline(&line,&len,fp)) != -1  && counter < 50){
@@ -97,7 +97,7 @@ int main() {
 
    fclose(fp);
 
-   printf("<a href=\"index.html\">Home</a>   ");
+   printf("<a href=\"../Home.html\">Home</a>   ");
    printf("<a href=\"javascript:history.back()\">Go back to menu.</a>");
    printf("</body></html>");
   

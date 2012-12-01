@@ -76,7 +76,7 @@ int main(){
       "</head>\n"
       "</html>\n";
     
-    printf (redirect_page_format, "login_error.html");
+    printf (redirect_page_format, "../pages/login_error.html");
 
   }
 
@@ -84,11 +84,11 @@ int main(){
   else if (result == 1){
     printf("<html><head><title>USER MENU</title></head><body>\n");
     printf("<p>USER menu:</p>\n");
-    printf("<form method=\"POST\" action=menu.cgi>\n");
+    printf("<form method=\"POST\" action=\"menu.cgi\">\n");
     printf("<p>Select one of the following options:</p>\n");
     printf("<input type =\"radio\" name=\"option\" value=\"0\">Change Password<br>\n");
     printf("<input type =\"radio\" name=\"option\" value=\"1\">See your purchase history.<br>\n");
-    printf("<a href=\"index.html\"> Go to home page</a><br>\n");
+    printf("<a href=\"../home.html\"> Go to home page</a><br>\n");
     printf("<input type =\"submit\" value=\"Submit!\"><br>\n");  
     printf("</form></body></html>\n");
   }
@@ -98,11 +98,11 @@ int main(){
   else{
     printf("<html><head><title>SYSTEM MENU</title></head><body>\n");
     printf("<p>SYSTEM menu:</p>\n");
-    printf("<form method=\"POST\" action=menu.cgi>\n");
+    printf("<form method=\"POST\" action=\"menu.cgi\">\n");
     printf("<p>Select one of the following options:</p>\n");
     printf("<input type =\"radio\" name=\"option\" value=\"2\">Access passweb.c<br>\n");
     printf("<input type =\"radio\" name=\"option\" value=\"3\">See inventory.<br>\n");
-    printf("<a href=\"index.html\">Go to home page</a><br>\n");
+    printf("<a href=\"../home.html\">Go to home page</a><br>\n");
     printf("<input type =\"submit\" value=\"Submit!\"><br>\n");  
     printf("</form></body></html>\n");
   }
@@ -122,7 +122,7 @@ int verifyDB (char username[40], char password[40])
                 ssize_t read;
                 int userType;                
  
-                fp = fopen("members.csv","r");
+                fp = fopen("../databases/members.csv","r");
 
                 //copy file contents, line by line, into arr
                 while( (read = getline(&line,&len,fp)) != -1  && counter < 50 )
@@ -160,6 +160,7 @@ int verifyDB (char username[40], char password[40])
                 //Will return 1 if user type is "USER" or 2 if user type is "SYSTEM"
                 else 
                   return usernameFound + userType;
-}
+
+ }
 
 

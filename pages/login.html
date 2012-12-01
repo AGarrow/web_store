@@ -10,8 +10,8 @@
 <html>
   
   <head>
-    <link href = "./css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>
-    <link href = "./css/custom.css" media = "all" rel="stylesheet" type="text/css" href="">
+    <link href = "/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href = "/css/custom.css" media = "all" rel="stylesheet" type="text/css" href="">
     <title>Sample Login Page</title>
   </head>
   
@@ -20,7 +20,7 @@
     <div class = "navbar-inner">
       <nav>
         <ul class = "nav pull-left">
-          <li><a href="home.html">HOME<i class="icon-home"></i></a></li>
+          <li><a href="../home.html">HOME<i class="icon-home"></i></a></li>
         </ul>
         <ul class = "nav pull-right">
           <li><a href="catalogue.html">Catalogue</a></li>
@@ -33,8 +33,9 @@
     <div class="span4 well" id="login" style="float:none; margin:0 auto;"> 
           <h2>Login</h2>
 
-            <!-- This is the login form -->
-              <form method="POST" action="login.cgi">
+          <!-- This is the login form -->
+          <!-- Access login.cgi script in cgi-bin folder -->
+              <form method="POST" action="../cgi-bin/login.cgi">
               
                 <p>Please enter your username and password:</p>
                 <input type="text" placeholder="username"name="username"> <br/>
