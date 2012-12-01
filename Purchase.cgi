@@ -9,14 +9,14 @@ def checkAccount():
 	form = cgi.FieldStorage()
 	if form.has_key("username"):
 		self.username = form["username"].value
-	if form.has_key("password"):
-		self.password = form["password"].value
+		if form.has_key("password"):
+			self.password = form["password"].value
 
-	for line in catalogue.readlines():
-		entry = line.split(',')
-		if line[0] == username & line[1] == password:
-			return true
-	return false
+		for line in catalogue.readlines():
+			entry = line.split(',')
+			if line[0] == username & line[1] == password:
+				return True
+	return False
 
 
 
