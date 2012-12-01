@@ -35,9 +35,15 @@ int main() {
   
   //Change password
   if (input == '0'){ 
-    printf("<html><head><title>Change Password</title></head>\n");
-    printf("<body>change password code here</body></html>");
-  
+    printf("<html><head><title>Change Password</title></head>\n"); 
+    printf("<body><p>Change your password:</p>\n");
+    printf("<form method=\"POST\" action=\"passchange.cgi\">\n");
+    printf("<p>Please enter your username, old password, and new password.</p>\n");
+    printf("Username: <input type =\"text\" name=\"username\"><br>\n");
+    printf("Old Password:<input type =\"password\" name=\"oldpass\"><br>\n");
+    printf("New Password:<input type =\"password\" name=\"newpass\"><br>\n");
+    printf("<input type =\"submit\" value=\"Submit!\"><br>\n");  
+    printf("</body></html>");
   }
 
   //Open up log.csv and display
@@ -71,6 +77,7 @@ int main() {
 
   //Access passweb.csv
   else if (input =='2'){
+   
   }
 
   //Access Inventory
