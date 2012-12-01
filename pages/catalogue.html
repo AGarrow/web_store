@@ -1,12 +1,73 @@
 <!DOCTYPE html>
 <head>
 	<title>Catalogue</title>
+	<link href = "./css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>
+	<link href = "./css/custom.css" media = "all" rel="stylesheet" type="text/css" href="">
 </head>
+
 <body>
+	<header class ="navbar navbar-fixed-top">
+		<div class = "navbar-inner">
+			<nav>
+				<ul class = "nav pull-left">
+					<li><a href="home.html">HOME<i class="icon-home"></i></a></li>
+				</ul>
+				<ul class = "nav pull-right">
+					<li><a href="catalogue.html">Catalogue</a></li>
+					<li><a href="login.html" target="_blank">Login</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+<div class = "well text-align: left">
 	<form method = "POST" action = "../cgi_bin/Purchase.cgi">
-		<input type = "text" name = "username" >
-		<input type = "text" name = "password" >
-		<input type = "submit" >
+	<h1>Catalogue</h1>
+	<div class = "table table-bordered table-striped table-condensed">
+		<div class = "row-fluid">
+			<div class = "span2 pull-left">
+				<img src="./images/welcome.jpg">
+			</div>
+			<div class = "span8">
+				<br/><h3>Lightweight</h3><br/>
+				<p>Mostly comprised of engineering students. Our lightweight class can carry students between 80-120 lbs</p>
+			</div>
+			<div class = "span2">
+				<h6></h6>
+				<input type = "checkbox" name = "light-purchase">
+				<input type = "text" name = "light-quantity" class = "input-small">
+			</div>
+		</div>
+	</div>
+	<div class = "table table-bordered table-striped table-condensed">
+		<div class = "row-fluid">
+			<div class = "span2 pull-left">
+				<img src="./images/welcome.jpg">
+			</div>
+			<div class = "span8">
+				<br/><h3>MidWeight</h3><br/>
+				<p>Mostly comprised of engineering students. Our lightweight class can carry students between 80-120 lbs</p>
+			</div>
+			<div class = "span2">
+				<h6></h6>
+				<input type = "checkbox" name = "light-purchase">
+				<input type = "text" name = "light-quantity" class = "input-small">
+			</div>
+		</div>
+	</div>
+
+
+
+
+		<input type = "text" name = "username" placeholder = "username" >
+		<input type = "text" name = "password" placeholder = "password" >
+		<input type = "submit" class = "btn btn-primary">
 	</form>
+
+</div>
+
+
+
+
 
 </body>
