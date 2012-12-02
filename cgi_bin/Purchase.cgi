@@ -2,30 +2,32 @@
 import cgi
 import os
 
-username
-password
 
 def checkAccount():
-	fn = os.path.join(os.path.dirname(__file__), 'databases/Inventory.csv')
+	fn= os.path.abspath('..')+'/databases/Inventory.csv'
 	catalogue = open(fn,'r')
 	form = cgi.FieldStorage()
-	username = form["username"].value
-	password = form["password"].value
+	if form.has_key("username"):
+		self.username = form["username"].value
+		if form.has_key("password"):
+			self.password = form["password"].value
+
+		for line in catalogue.readlines():
+			entry = line.split(',')
+			if line[0] == username & line[1] == password:
+				return True
+	return False
 
 
-	for line in catalogue.readlines():
-		entry = line.split(',')
-		if line[0] == username & line[1] == password
-			return true
-	return false
 
-print "Content-type: text/html"
-print "<html>"
+
+print "Content-type: text/html\n\n"
+print "<html>\n"
 if checkAccount():
-	print "hello "+username
-else
-	print "username and password do not match"
-print "</html>"
+	print "hello "+username+"\n"
+else:
+	print "username and password do not match\n"
+print "</html>\n"
 
 
 	

@@ -1,12 +1,99 @@
 <!DOCTYPE html>
 <head>
 	<title>Catalogue</title>
+	<link href = "./css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>
+	<link href = "./css/custom.css" media = "all" rel="stylesheet" type="text/css" href="">
 </head>
+
 <body>
+	<header class ="navbar navbar-fixed-top">
+		<div class = "navbar-inner">
+			<nav>
+				<ul class = "nav pull-left">
+					<li><a href="../home.html">HOME<i class="icon-home"></i></a></li>
+				</ul>
+				<ul class = "nav pull-right">
+					<li><a href="catalogue.html">Catalogue</a></li>
+					<li><a href="login.html" target="_blank">Login</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+<div class = "well text-align: left">
 	<form method = "POST" action = "../cgi_bin/Purchase.cgi">
-		<input type = "text" name = "username" >
-		<input type = "text" name = "password" >
-		<input type = "submit" >
+	<h1>Catalogue</h1>
+	<div class = "table table-bordered table-striped table-condensed">
+		<div class = "row-fluid">
+			<div class = "span2 pull-left">
+				<img src="./images/nerd.jpg">
+			</div>
+			<div class = "span8">
+				<br/><h3>Lightweight</h3><br/>
+				<p>Mostly comprised of engineering students. Our lightweight class can carry students between 80-120 lbs</p>
+			</div>
+			<div class = "span2">
+				<br/>
+				<label class = "checkbox">Purchase?
+					<input type = "checkbox" name = "light-purchase">
+				</label>
+				<label>Rides:</label>
+				<input type = "text" name = "light-quantity" class = "input-small" value ="0">
+			</div>
+		</div>
+	</div>
+	<div class = "table table-bordered table-striped table-condensed">
+		<div class = "row-fluid">
+			<div class = "span2 pull-left">
+				<img src="./images/student.jpg">
+			</div>
+			<div class = "span8">
+				<br/><h3>MidWeight</h3><br/>
+				<p>Just you're typical McGillionaire. these guys can carry between 120-160 lbs.</p>
+			</div>
+			<div class = "span2">
+				<br/>
+				<label class = "checkbox">Purchase?					
+					<input type = "checkbox" name = "mid-purchase">
+				</label>
+				<label>Rides:</label>				
+				<input type = "text" name = "mid-quantity" class = "input-small" value = "0">
+
+			</div>
+		</div>
+	</div>
+	<div class = "table table-bordered table-striped table-condensed">
+		<div class = "row-fluid">
+			<div class = "span2 pull-left">
+				<img src="./images/athlete.jpg">
+			</div>
+			<div class = "span8">
+				<br/><h3>HeavyWeight</h3><br/>
+				<p>athletes! football players! hockey players! definitely no problems carrying anyone under 250 lbs</p>
+			</div>
+			<div class = "span2">
+				<br/>
+				<label class = "checkbox"> Purchase?
+					<input type = "checkbox" name = "heavy-purchase">
+				</label>
+				<label>Rides:</label>
+				<input type = "text" name = "heavy-quantity" class = "input-small" value = "0">
+			</div>
+		</div>
+	</div>
+
+
+
+
+		<input type = "text" name = "username" placeholder = "username" >
+		<input type = "text" name = "password" placeholder = "password" >
+		<input type = "submit" class = "btn btn-primary">
 	</form>
+
+</div>
+
+
+
+
 
 </body>
