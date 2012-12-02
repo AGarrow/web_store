@@ -4,6 +4,7 @@ import os
 
 
 def parseForm():
+	form = cgi.FieldStorage()
 	if form.has_key("username") and form["username"].value != "":
 		self.username = form["username"].value
 	if form.has_key("password") and form["password"].value != "":
@@ -26,8 +27,10 @@ def checkAccount():
 	return False
 
 def editInventory():
-	
+	print "editing inventory"
+
 def appendLog():
+	print "appending log"
 
 
 
@@ -55,20 +58,20 @@ def printMenu():
 	print "</header>"
 
 def printError():
-
+	print "error"
 
 def printBill():
-
+	print "bill"
 parseForm()
 printHeader()
 print "<body>"
 printMenu()
 if checkAccount():
-	editInventory():
-	appendLog():
-	printBill():
+	editInventory()
+	appendLog()
+	printBill()
 else:
-	printError():
+	printError()
 print "</body>"
 
 
