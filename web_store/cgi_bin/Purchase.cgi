@@ -23,7 +23,6 @@ def checkAccount():
 
 print "Content-type: text/html\n\n"
 print "<html>\n"
-print"<h1>it works! </h1>"
 if checkAccount():
 	print "hello "+username+"\n"
 else:
