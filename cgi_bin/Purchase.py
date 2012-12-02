@@ -1,77 +1,84 @@
 #!/usr/local/bin/python
 import cgi
 import os
+class Response:
+	def __init__(self):
+		self.username = ""
+		self.password = ""
+		self.light_quantity = ""
+		self.mid_quantity = ""
+		self.heavy_quantity = ""
+	def parseForm(self):
+		form = cgi.FieldStorage()
+		if form.has_key("username") and form["username"].value != "":
+			self.username = form["username"].value
+		if form.has_key("password") and form["password"].value != "":
+			self.password = form["password"].value
+		if form.getvalue("light-purchase"):
+			self.light_quantity = form["light-quantity"].value
+		if form.getvalue("mid-purchase"):
+			self.mid_quantity = form["mid-quantity"].value
+		if form.getvalue("heavy-purchase"):
+			self.heavy_quantity = form["heavy-quantity"].value
 
 
-def parseForm():
-	form = cgi.FieldStorage()
-	if form.has_key("username") and form["username"].value != "":
-		self.username = form["username"].value
-	if form.has_key("password") and form["password"].value != "":
-		self.password = form["password"].value
-	if form.getvalue("light-purchase"):
-		self.light_quantity = form["light-quantity"].value
-	if form.getvalue("mid-purchase"):
-		self.mid_quantity = form["mid-quantity"].value
-	if form.getvalue("heavy-purchase"):
-		self.heavy_quantity = form["heavy-quantity"].value
+	def checkAccount(self):
+		fn= os.path.abspath('..')+'/databases/Inventory.csv'
+		catalogue = open(fn,'r')
+		for line in catalogue.readlines():
+			entry = line.split(',')
+			if line[0] is self.username and line[1] is self.password:
+				return True
+		return False
 
+	def editInventory(self):
+		print "editing inventory"
 
-def checkAccount():
-	fn= os.path.abspath('..')+'/databases/Inventory.csv'
-	catalogue = open(fn,'r')
-	for line in catalogue.readlines():
-		entry = line.split(',')
-		if line[0] == username & line[1] == password:
-			return True
-	return False
-
-def editInventory():
-	print "editing inventory"
-
-def appendLog():
-	print "appending log"
+	def appendLog(self):
+		print "appending log"
 
 
 
-def printHeader():
-	print "Content-type: text/html\n\n"
-	print "<html>\n"
-	print "<head>"
-	print """<link href = "./css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>"""
-	print """<link href = "./css/custom.css" media = "all" rel="stylesheet" type="text/css">"""
-	print "</head>"
+	def printHeader(self):
+		print "Content-type: text/html\n\n"
+		print "<html>\n"
+		print "<head>"
+		print """<link href = "./css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>"""
+		print """<link href = "./css/custom.css" media = "all" rel="stylesheet" type="text/css">"""
+		print "</head>"
 
-def printMenu():
-	print """<header class ="navbar navbar-fixed-top">"""
-	print """<div class = "navbar-inner">"""
-	print "<nav>"
-	print """<ul class = "nav pull-left">"""
-	print """<li><a href="../home.html">HOME<i class="icon-home"></i></a></li>"""
-	print "</ul>"
-	print """<ul class = "nav pull-right">"""
-	print """<li><a href="catalogue.html">Catalogue</a></li>"""
-	print """<li><a href="login.html" target="_blank">Login</a></li>"""
-	print "</ul>"
-	print "</nav>"
-	print "</div>"
-	print "</header>"
+	def printMenu(self):
+		print """<header class ="navbar navbar-fixed-top">"""
+		print """<div class = "navbar-inner">"""
+		print "<nav>"
+		print """<ul class = "nav pull-left">"""
+		print """<li><a href="../home.html">HOME<i class="icon-home"></i></a></li>"""
+		print "</ul>"
+		print """<ul class = "nav pull-right">"""
+		print """<li><a href="catalogue.html">Catalogue</a></li>"""
+		print """<li><a href="login.html" target="_blank">Login</a></li>"""
+		print "</ul>"
+		print "</nav>"
+		print "</div>"
+		print "</header>"
 
-def printError():
-	print "error"
+	def printError(self):
+		print "error"
 
-def printBill():
-	print "bill"
-parseForm()
-printHeader()
+	def printBill(self):
+		print "bill"
+
+order = Response()
+order.parseForm()
+order.printHeader()
 print "<body>"
-printMenu()
-if checkAccount():
-	editInventory()
-	appendLog()
-	printBill()
+order.printMenu()
+if order.checkAccount():
+	order.editInventory()
+	order.appendLog()
+	order.printBill()
 else:
-	printError()
+	order.printError()
 print "</body>"
 
 
