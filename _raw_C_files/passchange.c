@@ -13,7 +13,7 @@ int main(){
 
   //Most of this code just stores the username, old password, new password entered in html form
   //in variables username, oldpass, newpass
-  
+
   char c;
   int i = 0;
   int j = 0;
@@ -24,7 +24,7 @@ int main(){
   char command[100] = {0};
 
   int length = atoi(getenv("CONTENT_LENGTH"));
-  
+
   length++;
 
   fgets (input,length,stdin);
@@ -36,13 +36,13 @@ int main(){
   i++;
 
   while ((c = input[i]) != '&'){
-      username[j] = c;
-      i++;
-      j++;
+    username[j] = c;
+    i++;
+    j++;
   }
 
   username[j] = '\0';
-  
+
   j = 0;
 
   while ((c = input[i]) != '='){
@@ -52,9 +52,9 @@ int main(){
   i++;
 
   while ((c = input[i]) != '&'){
-      oldpass[j] = c;
-      i++;
-      j++;
+    oldpass[j] = c;
+    i++;
+    j++;
   }
 
   oldpass[j] = '\0';
@@ -68,13 +68,13 @@ int main(){
   i++;
 
   while ((c = input[i]) != EOF && i < length){
-      newpass[j] = c;
-      i++;
-      j++;
+    newpass[j] = c;
+    i++;
+    j++;
   }
 
   newpass[j] = '\0'; 
- 
+
   //Now, call system() with info to change password, print result on html page.
 
   strcat(command, "./passweb_store -edit ");
@@ -86,12 +86,13 @@ int main(){
   strcat(command, " ");
   strcat(command, newpass);
   strcat(command," USER");
-  
-   int log = system(command);
-  
-   printf("<head><title>Success</title></head><body>");
-   printf("<a href=\"../home.html\">Home</a>   ");
-   printf("<a href=\"javascript: window.history.go(-2)\">Go back to menu.</a>");
-   printf("</body></html>");
+
+  int log = system(command);
+
+  printf("<head><title>Success</title></head><body>");
+  printf("Your password was successfully changed<br>");
+  printf("<a href=\"../home.html\">Home</a>   ");
+  printf("<a href=\"javascript: window.history.go(-2)\">Go back to menu.</a>");
+  printf("</body></html>");
 
 }
