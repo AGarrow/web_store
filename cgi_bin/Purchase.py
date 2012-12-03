@@ -1,13 +1,17 @@
 #!/usr/local/bin/python
+
 import cgi
 import os
+
 class Purchase:
+
 	def __init__(self):
 		self.username = ""
 		self.password = ""
 		self.light_quantity = ""
 		self.mid_quantity = ""
 		self.heavy_quantity = ""
+	
 	def parseForm(self,form):
 		if form.has_key("username") and form["username"].value != "" :
 			self.username = form["username"].value.strip()
@@ -126,6 +130,7 @@ class Purchase:
 			print """<a href="catalogue.html">Catalogue</a>"""
 			print """<a href="home.html">Home</a>"""			
 		
+
 form = cgi.FieldStorage()
 order = Purchase()
 order.parseForm(form)
@@ -140,6 +145,3 @@ else:
 	order.printError()
 print "</body>"
 print "</html>"
-
-
-	
