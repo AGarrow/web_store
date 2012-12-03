@@ -45,7 +45,7 @@ class Purchase:
 			entry = line.split(',')
 			
 			# They are restricted to purchase only the amount actually in the inventory
-			if quantity > entry[3]
+			if quantity > entry[3]:
 				print "We have only " + entry[3] + " rides left"
 			else:
 			# Subtract the amount purchased from the inventory

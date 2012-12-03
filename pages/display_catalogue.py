@@ -1,3 +1,4 @@
+#!/usr/local/bin/python
 import cgi
 import os
 def printHeader():
@@ -44,7 +45,7 @@ def printItem(entry):
 	quantity = entry[3].strip()
 	price = entry[4].strip()
 	if pid == "01":
-		img = """"./images/nerd.jpg"""""
+		img = """"./images/nerd.jpg" """
 		checkName =""" "light-purchase" """
 		quantName = """ "light-quantity" """
 	if pid == "02":
