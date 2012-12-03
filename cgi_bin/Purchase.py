@@ -62,8 +62,11 @@ class Purchase:
 		print "</header>"
 
 	def printError(self):
-		print """<div class = "row-fluid">"""
-		print "<p>error</p>"
+		print """<div class = "span12">"""
+		print """<div class = "alert alert-block alert-error">"""
+		print "<h4>Oops!</h4>"
+		print "<p>the username and password you entered did not match our records</p>"
+		print"</div>"
 		print"</div>"
 
 	def printBill(self):
