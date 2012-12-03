@@ -118,9 +118,9 @@ class Purchase:
 			print "ID, Name, Description, Quantity, Price \n"
 			print line[0] + ", " + line[1] + ", " + line[2] + ", " + rides + ", " list[4]  # id, name, description, quantity, price
 			print "Total before tax = %.2f \n" %(total_before_tax) 
-			print "GST = %.2f \n" %(gst) # Will adjust to real TPS and TVQ values
+			print "GST = %.2f \n" %(gst) 
 			print "PST = %.2f \n" %(pst)
-			print "Total with taxes =  %.2f \n" %(total_before_tax + tvq + tps)
+			print "Total with taxes =  %.2f \n" %(total_before_tax + gst + pst)
 			
 			# Provides a link back to the catalogue page and the home page at the end of the bill.
 			print """<a href="catalogue.html">Catalogue</a>"""
