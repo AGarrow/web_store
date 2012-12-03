@@ -35,17 +35,17 @@ class Purchase:
 		# Input: quantity selected by the user 		
 		# Will update with the information from Parseform
 		fn = os.path.abspath('..')+ '/databases/Inventory.csv'
-		inventory = open(fn, 'w')
+		inventory = open(fn, "w")
 		
 		for line in inventory.readlines():
 			entry = line.split(',')
 			
 			# They are restricted to purchase only the amount actually in the inventory
-			if quantity > line[3]
-				print "We have only " + line[3] + " rides left"
+			if quantity > entry[3]
+				print "We have only " + entry[3] + " rides left"
 			else:
 			# Subtract the amount purchased from the inventory
-			line[3] = line[3] - quantity 
+			entry[3] = entry[3] - quantity 
 		
 		inventory.close()
 
@@ -55,7 +55,7 @@ class Purchase:
 		# Will update with the information from Parseform
 		
 		fn = os.path.abspath('..')+ '/databases/Log.csv'
-		log = open(fn, 'w')
+		log = open(fn, "w")
 		
 		for line in log.readlines():
 			entry = line.append(total_before_tax)
@@ -116,7 +116,7 @@ class Purchase:
 			
 			print "Your bill: \n"
 			print "ID, Name, Description, Quantity, Price \n"
-			print line[0] + ", " + line[1] + ", " + line[2] + ", " + rides + ", " list[4]  # id, name, description, quantity, price
+			print entry[0] + ", " + entry[1] + ", " + entry[2] + ", " + rides + ", " entry[4]  # id, name, description, quantity, price
 			print "Total before tax = %.2f \n" %(total_before_tax) 
 			print "GST = %.2f \n" %(gst) 
 			print "PST = %.2f \n" %(pst)
