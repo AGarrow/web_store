@@ -13,31 +13,31 @@ class Purchase:
 		self.heavy_quantity = ""
 	
 	def parseForm(self, form):
-	if form.has_key("username") and form["username"].value != "":
-		self.username = form["username"].value.strip()
+		if form.has_key("username") and form["username"].value != "":
+			self.username = form["username"].value.strip()
 
-	if form.has_key("password") and form["password"].value != "":
-		self.username = form["password"].value.strip()
+		if form.has_key("password") and form["password"].value != "":
+			self.username = form["password"].value.strip()
 
-	if form.has_key("light-purchase"):
-		self.light_quantity = form["light-quantity"].value.strip()
-		double self.light_price = 20 
+		if form.has_key("light-purchase"):
+			self.light_quantity = form["light-quantity"].value.strip()
+			double self.light_price = 20 
 
-	if form.has_key("mid-purchase"):
-		self.mid_quantity = form["mid-quantity"].value.strip()
-		double self.mid_price = 25
+		if form.has_key("mid-purchase"):
+			self.mid_quantity = form["mid-quantity"].value.strip()
+			double self.mid_price = 25
 
-	if form.has_key("heavy-purchase"):
-		self.heavy_quantity = form["heavy-quanity"].value.strip()
-		double self.heavy_price = 30
+		if form.has_key("heavy-purchase"):
+			self.heavy_quantity = form["heavy-quanity"].value.strip()
+			double self.heavy_price = 30
 
 	# We create a tuple to store the information
 	#self.temspurchased = {(id1, quantity1,price1), (id2, quantity2,price2), (id3,quantity3,price3), ("username", self.username)}
 
-	self.itemspurchased = {("light-purchased", self.light_quantity, self.light_price),
-			       ("mid-purchase", self.mid_quantity, self.mid_price),
-			       ("heavy-purchase", self.heavy_quantity, self.heavy_price),
-			       ("username", self.username)}
+		self.itemspurchased = {("light-purchased", self.light_quantity, self.light_price),
+				       ("mid-purchase", self.mid_quantity, self.mid_price),
+				       ("heavy-purchase", self.heavy_quantity, self.heavy_price),
+				       ("username", self.username)}
 
 
 
