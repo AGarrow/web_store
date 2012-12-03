@@ -17,7 +17,7 @@ def printMenu():
 	print """<li><a href="../home.html">HOME<i class="icon-home"></i></a></li>"""
 	print "</ul>"
 	print """<ul class = "nav pull-right">"""
-	print """<li><a href="../pages/catalogue.html">Catalogue</a></li>"""
+	print """<li><a href="../pages/display_catalogue.py">Catalogue</a></li>"""
 	print """<li><a href="../pages/login.html" target="_blank">Login</a></li>"""
 	print "</ul>"
 	print "</nav>"
