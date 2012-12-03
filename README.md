@@ -52,11 +52,11 @@ Notes:
 
 **Things to finish up (delete this section before handing in):**
 
--delete redundant web_store directory
--make sure python script to write to log works
--finish c code to display user's purchase history
--organize directory (copy all python shit to python folder, clean up useless stuff, keep everything organized)
--clone this repo in the shared folder so TAs can check out the log, possibly "unhide" the log and include it as an additional file in the main directory
--make sure everything works on alexi's cs public_html folder
--tar,zip,submit
--hope we get 100
+* delete redundant web_store directory
+* make sure python script to write to log works
+* finish c code to display user's purchase history
+* organize directory (copy all python shit to python folder, clean up useless stuff, keep everything organized)
+* clone this repo in the shared folder so TAs can check out the log, possibly "unhide" the log and include it as an additional file in the main directory
+* make sure everything works on alexi's cs public_html folder
+* tar,zip,submit
+* hope we get 100
