@@ -3,6 +3,17 @@ COMP 206 FINAL ASSIGNMENT
 
 Hanif Jetha (260205055), Alexander Garrow(enter your ID), Santiago Paiva (enter your ID)
 
+Link to site (on Alexi's public folder):
+----------------------------------------
+
+[Human Bixie - HOME](http://cs.mcgill.ca/~agarro/home.html)
+
+*Live Databases* (found in Alexi's `public_html/databases/`):
+
+[Live *members.csv*](http://cs.mcgill.ca/~agarro/databases/members.csv)
+[Live *log.csv*](http://cs.mcgill.ca/~agarro/databases/log.csv)
+[Live *inventory.csv*](http://cs.mcgill.ca/~agarro/databases/inventory.csv)
+
 Outline:
 --------
 
