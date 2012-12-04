@@ -32,7 +32,7 @@ class Purchase:
 			self.mid_price = 25
 
 		if form.has_key("heavy-purchase"):
-			self.heavy_quantity = form["heavy-quanity"].value.strip()
+			self.heavy_quantity = form["heavy-quantity"].value.strip()
 			self.heavy_price = 30
 
 	# We create a tuple to store the information
