@@ -73,6 +73,5 @@ Notes:
 * make sure everything works on alexi's cs public_html folder
 * tar,zip,submit
 * hope we get 100
-* [santiago] Add more space login entry form 
-* [santiago] Add the price of each ride on the catalogue page
+* [santiago] Add more entry space (login form and catalogue)
 * [santiago] Add Favicon 
