@@ -1,6 +1,6 @@
 // passweb.cgi: this script essentially parses the selected option in menu.c
 // and calls the corresponding function of passweb_store using system()
-    
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,7 +17,7 @@ int main() {
   char input[200];
   char option;
   int length = atoi(getenv("CONTENT_LENGTH"));
-  
+
   length++;
 
   fgets(input,length,stdin);
@@ -26,7 +26,7 @@ int main() {
 
   //Most of this code just stores the username, old password, new password entered in html form
   //in variables username, oldpass, newpass
-  
+
   char c;
   int i = 0;
   int j = 0;
@@ -45,7 +45,7 @@ int main() {
   i++;
 
   while ((c = input[i]) != '&'){
-      i++;
+    i++;
   }
 
   while ((c = input[i]) != '='){
@@ -55,9 +55,9 @@ int main() {
   i++;
 
   while ((c = input[i]) != '&'){
-      olduser[j] = c;
-      i++;
-      j++;
+    olduser[j] = c;
+    i++;
+    j++;
   }
 
   olduser[j] = '\0';
@@ -71,159 +71,163 @@ int main() {
   i++;
 
   while ((c = input[i]) != '&'){
-      oldpass[j] = c;
-      i++;
-      j++;
+    oldpass[j] = c;
+    i++;
+    j++;
   }
 
   oldpass[j] = '\0';
 
   j = 0;
 
-while ((c = input[i]) != '='){
+  while ((c = input[i]) != '='){
     i++;
   }
 
   i++;
 
   while ((c = input[i]) != '&'){
-      oldtype[j] = c;
-      i++;
-      j++;
+    oldtype[j] = c;
+    i++;
+    j++;
   }
 
   oldtype[j] = '\0';
 
   j = 0;
 
-while ((c = input[i]) != '='){
+  while ((c = input[i]) != '='){
     i++;
   }
 
   i++;
 
   while ((c = input[i]) != '&'){
-      newuser[j] = c;
-      i++;
-      j++;
+    newuser[j] = c;
+    i++;
+    j++;
   }
 
   newuser[j] = '\0';
 
   j = 0;
 
-while ((c = input[i]) != '='){
+  while ((c = input[i]) != '='){
     i++;
   }
 
   i++;
 
   while ((c = input[i]) != '&'){
-      newpass[j] = c;
-      i++;
-      j++;
+    newpass[j] = c;
+    i++;
+    j++;
   }
 
   newpass[j] = '\0';
 
   j = 0;
 
-while ((c = input[i]) != '='){
+  while ((c = input[i]) != '='){
     i++;
   }
 
   i++;
 
   while ((c = input[i]) != EOF && i < length){
-      newtype[j] = c;
-      i++;
-      j++;
+    newtype[j] = c;
+    i++;
+    j++;
   }
 
   newtype[j] = '\0'; 
 
 
 
-//Create the specified system() systemString and submit, depending on option selected:
+  //Create the specified system() systemString and submit, depending on option selected:
 
 
-//user chose verify
-if (option == '0'){
+  //user chose verify
+  if (option == '0'){
 
-  strcat(systemString, "./passweb_store -verify ");
-  strcat(systemString, olduser);
-  strcat(systemString," ");
-  strcat(systemString, oldpass);
-  
-   int log = system(systemString);
-  
-   printf("<head><title>Success</title></head><body>");
-   printf("<a href=\"../home.html\">Home</a>   ");
-   printf("<a href=\"javascript: window.history.go(-2)\">Go back to menu.</a>");
-   printf("</body></html>");
+    strcat(systemString, "./passweb_store -verify ");
+    strcat(systemString, olduser);
+    strcat(systemString," ");
+    strcat(systemString, oldpass);
 
-}
+    int log = system(systemString);
 
-//user chose add
-else if (option == '1'){
+    printf("<head><title>Success</title></head><body>");
+    printf("<p>Verify was called in passweb_store() using a system() command, although you may not be verified...</p><br>");
+    printf("<a href=\"../home.html\">Home</a>   ");
+    printf("<a href=\"javascript: window.history.go(-2)\">Go back to menu.</a>");
+    printf("</body></html>");
 
-  strcat(systemString, "./passweb_store -add ");
-  strcat(systemString, olduser);
-  strcat(systemString," ");
-  strcat(systemString, oldpass);
-  strcat(systemString," ");
-  strcat(systemString, oldtype);
-  
-  int log = system(systemString);
-  
-   printf("<head><title>Success</title></head><body>");
-   printf("<a href=\"../home.html\">Home</a>   ");
-   printf("<a href=\"javascript: window.history.go(-2)\">Go back to menu.</a>");
-   printf("</body></html>");
+  }
 
-}
+  //user chose add
+  else if (option == '1'){
 
-//user chose edit
-else if (option == '2'){
+    strcat(systemString, "./passweb_store -add ");
+    strcat(systemString, olduser);
+    strcat(systemString," ");
+    strcat(systemString, oldpass);
+    strcat(systemString," ");
+    strcat(systemString, oldtype);
 
-  strcat(systemString, "./passweb_store -edit ");
-  strcat(systemString, olduser);
-  strcat(systemString," ");
-  strcat(systemString, oldpass);
-  strcat(systemString," ");
-  strcat(systemString, oldtype);
-  strcat(systemString," ");
-  strcat(systemString, newuser);
-  strcat(systemString," ");
-  strcat(systemString, newpass);
-  strcat(systemString," ");
-  strcat(systemString, newtype);
- 
- 
- int log = system(systemString);
-  
-   printf("<head><title>Success</title></head><body>");
-   printf("<a href=\"../home.html\">Home</a>   ");
-   printf("<a href=\"javascript: window.history.go(-2)\">Go back to menu.</a>");
-   printf("</body></html>");
+    int log = system(systemString);
+
+    printf("<head><title>Success</title></head><body>");
+    printf("<p>Great Success</p><br>");
+    printf("<a href=\"../home.html\">Home</a>   ");
+    printf("<a href=\"javascript: window.history.go(-2)\">Go back to menu.</a>");
+    printf("</body></html>");
+
+  }
+
+  //user chose edit
+  else if (option == '2'){
+
+    strcat(systemString, "./passweb_store -edit ");
+    strcat(systemString, olduser);
+    strcat(systemString," ");
+    strcat(systemString, oldpass);
+    strcat(systemString," ");
+    strcat(systemString, oldtype);
+    strcat(systemString," ");
+    strcat(systemString, newuser);
+    strcat(systemString," ");
+    strcat(systemString, newpass);
+    strcat(systemString," ");
+    strcat(systemString, newtype);
 
 
-}
+    int log = system(systemString);
 
-//user chose delete
-else{
+    printf("<head><title>Success</title></head><body>");
+    printf("<p>Great Success</p><br>");
+    printf("<a href=\"../home.html\">Home</a>   ");
+    printf("<a href=\"javascript: window.history.go(-2)\">Go back to menu.</a>");
+    printf("</body></html>");
 
-  strcat(systemString, "./passweb_store -del ");
-  strcat(systemString, olduser);
-  
-   int log = system(systemString);
-  
-   printf("<head><title>Success</title></head><body>");
-   printf("<a href=\"../home.html\">Home</a>   ");
-   printf("<a href=\"javascript: window.history.go(-2)\">Go back to menu.</a>");
-   printf("</body></html>");
 
-}
+  }
+
+  //user chose delete
+  else{
+
+    strcat(systemString, "./passweb_store -del ");
+    strcat(systemString, olduser);
+
+    int log = system(systemString);
+
+    printf("<head><title>Success</title></head><body>");
+    printf("<p>Great Success</p><br>");
+    printf("<a href=\"../home.html\">Home</a>   ");
+    printf("<a href=\"javascript: window.history.go(-2)\">Go back to menu.</a>");
+    printf("</body></html>");
+
+  }
 
 
 }

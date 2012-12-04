@@ -7,7 +7,7 @@
 // 2 -> access password (from SYSTEM menu)
 // 3 -> see inventory (from SYSTEM menu)
 
-    
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -25,20 +25,38 @@ int main() {
   char inputString[200];
   char input;
   int length = atoi(getenv("CONTENT_LENGTH"));
-  
+  char c;
+  int i = 0;
+  char username[40];
+  int j = 0;
+
   length++;
 
   fgets(inputString,length,stdin);
 
-  input = inputString[length - 2];
+  input = inputString[7];
 
-  
+  while ( (c = inputString[i]) != '&')
+    i++;
+
+  while ( (c = inputString[i]) != '=')
+    i++;
+
+  i++;
+
+  while ( (c = inputString[i]) != EOF && i < length){
+    username[j] = c;
+    j++;
+    i++;
+  }
+
   //Change password
   if (input == '0'){ 
     printf("<html><head><title>Change Password</title></head>\n"); 
     printf("<body><p>Change your password:</p>\n");
     printf("<form method=\"POST\" action=\"passchange.cgi\">\n");
     printf("<p>Please enter your username, old password, and new password.</p>\n");
+    printf("<br>Note: please make sure you enter the correct info and that your account exists.<br>");
     printf("Username: <input type =\"text\" name=\"username\"><br>\n");
     printf("Old Password:<input type =\"password\" name=\"oldpass\"><br>\n");
     printf("New Password:<input type =\"password\" name=\"newpass\"><br>\n");
@@ -51,33 +69,42 @@ int main() {
 
     printf("<html><head><title>Purchase History</title></head>\n");
     printf("<body><p>Purchase History: (log.csv) </p>\n");
-    
+
     FILE *fp;
     char *line = NULL;
     size_t len = 0;
     int counter = 0;
     ssize_t read;
+    char logArray[20][50];
 
     fp = fopen("../databases/log.csv", "r");
 
     //Print each line in file log.csv
     while ( (read = getline(&line,&len,fp)) != -1  && counter < 50){
 
-      printf("%s<br>",line);
+      strcpy(logArray[counter],line);
       counter++;
-    
+
     }
 
-   fclose(fp);
+    fclose(fp);
 
-   printf("<a href=\"../home.html\">Home</a>   ");
-   printf("<a href=\"javascript:history.back()\">Go back to menu.</a>");
-   printf("</body></html>");
+    for (int i = 0; i < counter; i ++){
+
+      if (strstr(logArray[i],username)){
+
+        printf("%s's purchases are:",username); 
+      }
+    }
+
+    printf("<a href=\"../home.html\">Home</a>   ");
+    printf("<a href=\"javascript:history.back()\">Go back to menu.</a>");
+    printf("</body></html>");
   }
 
   //Access passweb.csv
   else if (input =='2'){
-  
+
     printf("<html><head><title>PASSWEB.C ACCESS:</title></head>\n"); 
     printf("<body><p>Access all of passweb.c's functionality here:</p>\n");
     printf("<form method=\"POST\" action=\"passweb.cgi\">\n");
@@ -87,7 +114,7 @@ int main() {
     printf("Edit (enter an old username and password,type,then new u/n, pass and type): <input type =\"radio\" name=\"option\" value=\"2\"><br>\n");
     printf("Delete (enter username to delete): <input type =\"radio\" name=\"option\" value=\"3\"><br><br>\n");
     printf("Please fill in the required fields for the option you selected:<br><br>\n");
-    printf("For delete, verify, add, use the first, first 2, or first 3 fields (respectively).<br><br>");
+    printf("For delete: fill in first field.<br>verify:fill in first 2 fields.<br> add: first 3 fields <br><br>");
     printf("Username: <input type =\"text\" name=\"user1\"><br>\n");
     printf("Password:<input type =\"password\" name=\"oldpass\"><br>\n");
     printf("Type:<input type =\"text\" name=\"type1\"><br>\n");
@@ -103,10 +130,10 @@ int main() {
 
   //Access Inventory
   else {
-    
+
     printf("<html><head><title>Inventory</title></head>\n");
     printf("<body><p>Store Inventory: (Inventory.csv) </p>\n");
-    
+
     FILE *fp;
     char *line = NULL;
     size_t len = 0;
@@ -117,21 +144,20 @@ int main() {
 
     //Print each line in file inventory.csv
     while ( (read = getline(&line,&len,fp)) != -1  && counter < 50){
-      
+
       printf("%s<br>",line);
       counter++;
-    
+
     }
 
-   fclose(fp);
+    fclose(fp);
 
-   printf("<a href=\"../Home.html\">Home</a>   ");
-   printf("<a href=\"javascript:history.back()\">Go back to menu.</a>");
-   printf("</body></html>");
-  
-  
+    printf("<a href=\"../Home.html\">Home</a>   ");
+    printf("<a href=\"javascript:history.back()\">Go back to menu.</a>");
+    printf("</body></html>");
+
+
   }
-
 
 
 }
