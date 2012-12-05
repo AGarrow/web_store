@@ -68,7 +68,7 @@ int main() {
   else if (input == '1'){
 
     printf("<html><head><title>Purchase History</title></head>\n");
-    printf("<body><p>Purchase History: (log.csv) </p><br>\n");
+    printf("<body><p>Purchase History: (Log.csv) </p><br>\n");
 
     FILE *fp;
     char *line = NULL;
@@ -79,7 +79,7 @@ int main() {
     char purchaseLine[50];
     char * junk;
 
-    fp = fopen("../databases/log.csv", "r");
+    fp = fopen("../databases/Log.csv", "r");
 
     //Print each line in file log.csv
     while ( (read = getline(&line,&len,fp)) != -1  && counter < 50){
