@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+i#!/usr/local/bin/python
 
 import cgi
 import os
@@ -8,9 +8,6 @@ class Purchase:
 	def __init__(self):
 		self.username = ""
 		self.password = ""
-		self.light_quantity = ""
-		self.mid_quantity = ""
-		self.heavy_quantity = ""
 		self.light_price = ""
 		self.mid_price = ""
 		self.heavy_price = ""
@@ -22,28 +19,24 @@ class Purchase:
 
 		if form.has_key("password") and form["password"].value != "":
 			self.password = form["password"].value.strip()
-
+		self.itemspurchased = {"username":self.username}
 		if form.has_key("light-purchase"):
-			self.light_quantity = form["light-quantity"].value.strip()
+			light_quantity = form["light-quantity"].value.strip()
 			self.light_price = 20 
-
+			self.itemspurchased["lightweight"] = light_quantity
 		if form.has_key("mid-purchase"):
-			self.mid_quantity = form["mid-quantity"].value.strip()
+			mid_quantity = form["mid-quantity"].value.strip()
 			self.mid_price = 25
-
+			self.itemspurchased["midweight"] = mid_quantity
 		if form.has_key("heavy-purchase"):
-			self.heavy_quantity = form["heavy-quanity"].value.strip()
+			heavy_quantity = form["heavy-quantity"].value.strip()
 			self.heavy_price = 30
+			self.itemspurchased["heavyweight"] = heavy_quantity
 
 	# We create a tuple to store the information
 	#self.temspurchased = {(id1, quantity1,price1), (id2, quantity2,price2), (id3,quantity3,price3), ("username", self.username)}
 
-		self.itemspurchased = [
-			("light-purchased", self.light_quantity, self.light_price),
-		       ("mid-purchase", self.mid_quantity, self.mid_price),
-		       ("heavy-purchase", self.heavy_quantity, self.heavy_price),
-		       ("username", self.username)
-		]
+		
 
 
 
@@ -65,13 +58,14 @@ class Purchase:
 		fn = os.path.abspath('..') + '/databases/Inventory.csv'
 		inventory = open(fn, "r")
 
-		modified_list = ()
+		modified_list = []
+		quantity_in_stock = 0
 		for line in inventory.readlines():
 			entry = line.split(',')
 			for items in self.itemspurchased:
 				if(items[0] == entry[0]):	
 
-					quantity_in_stock = int(entry[3].strip())
+					quantity_in_stock = int(entry[3])
  
 					quantity_selected = items[1] 				
 
@@ -84,7 +78,7 @@ class Purchase:
 						#quantity_and_price = (items[1], entry[4])					
 
 
-			modified_list.append("%s,%s,%s,%s,%s,%s" % (entry[0], entry[1], entry[2], quantity_in_stock, entry[4]))
+			modified_list.append("%s,%s,%s,%s,%s" % (entry[0], entry[1], entry[2], quantity_in_stock, entry[4]))
 
 		inventory.close() 
 
@@ -102,10 +96,8 @@ class Purchase:
 		#INPUT: self.itemspurchased from parseForm()
 
 		fn = os.path.abspath('..') + '/databases/Log.csv'
-        	log = open(fn, "a") #Make sure that "a" is the correct mode
-
-		for line in log.readlines():
-			entry = log.append(self.itemspurchased) # Not sure if python allows this, otherwise, we need to iterate 
+        	log = open(fn, 'a') #Make sure that "a" is the correct mode
+		log.write("%s" % self.itemspurchased)
 
 		log.close()
 
@@ -143,27 +135,32 @@ class Purchase:
 		print"</div>"
 
 	def printBill(self):
-		print "Your Bill: \n" 
+		print """<div class ="span6 well" style = "float:none; margin:0 auto;">
+			     <h2> Your Bill:</h2>
+			     <h4>"""+self.username+ """</h4>
+			     <table class = "table table-striped">
+				  "<th>Item</th><th>Quantity:</th><th>Price</th><th>due</th>"""
+			  	
 		# INPUT: self.itemspurchased from editInventory()
 		total_before_tax = 0
-		for items in self.itemspurchased:
-			price = float(items[2].strip())
-			quantity_selected = int(items[1].strip())
-			total_before_tax = quantity_selected * price
-			gst = total_before_tax * 0.05
-			pst = gst * 0.095
-	
-			
-			print "Name, Quantity, Price: \n"
-			print items[0] + "," + quantity_selected + "," + price
-			print "Total before tax = %f \n" %(total_before_tax)
-			print "GST = %f \n" %(gst)
-			print "PST = %f \n" %(pst)
-			print "Total = %f \n" %(total_before_tax + gst + pst)
-
-			# Provide link back to Catalogue and Home
-			print """<a href="catalogue.html">Catalogue</a>"""
-			print """<a href="home.html">Home</a> """
+		if self.itemspurchased.has_key("lightweight"):
+			price =int(self.itemspurchased["lightweight"])*self.light_price
+			print "<tr><td>lightweight</td><td>"+self.itemspurchased["lightweight"]+"</td><td>$"+self.light_price+"</td><td>"+price+"</td></tr>"
+			total_before_tax += price
+		if self.itemspurchased.has_key("midweight"):
+			price =self.itemspurchased["midweight"].value*self.mid_price
+			print "<tr><td>midweight</td><td>"+self.itemspurchased["midweight"]+"</td><td>$"+self.mid_price+"</td><td>"+price+"</td></tr>"
+			total_before_tax += price
+		if self.itemspurchased.has_key("heavyweight"):
+			price =int(self.itemspurchased["heavyweight"])*self.heavy_price
+			print "<tr><td>heavyweight</td><td>"+str(self.itemspurchased["heavyweight"])+"</td><td>$"+str(self.heavy_price)+"</td><td>"+str(price)+"</td></tr>"
+			total_before_tax += price
+		gst = total_before_tax*0.05
+		pst = gst * 0.095
+		print "</table>"
+		print "GST: $"+str(gst)
+		print "PST: $"+str(pst)
+		print "TOTAL:"+str(total_before_tax+gst+pst)
 			
 		
 

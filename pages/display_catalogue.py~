@@ -85,6 +85,7 @@ printTableHead()
 for line in catalogue.readlines():
 	entry = line.split(',')
 	if int(entry[3]) != 0:
+		print "in stock"
 		printItem(entry)
 printTableTail()
 print "</body>"
