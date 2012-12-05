@@ -1,18 +1,20 @@
 COMP 206 FINAL ASSIGNMENT
 =========================
 
-Hanif Jetha (260205055), Alexander Garrow(enter your ID), Santiago Paiva (enter your ID)
+Hanif Jetha (260205055), Alexander Garrow(enter your ID), Santiago Paiva (260477105)
 
-Link to site (on Alexi's public folder):
-----------------------------------------
+Live links to site (on Alexi's public folder):
+-----------------------------------------------
+
+####Main Site
 
 [Human Bixie - HOME](http://cs.mcgill.ca/~agarro/home.html)
 
-*Live Databases* (found in Alexi's `public_html/databases/`):
+####Live Databases (found in Alexi's `public_html/databases/`):
 
-[Live *members.csv*](http://cs.mcgill.ca/~agarro/databases/members.csv)
-[Live *log.csv*](http://cs.mcgill.ca/~agarro/databases/log.csv)
-[Live *inventory.csv*](http://cs.mcgill.ca/~agarro/databases/inventory.csv)
+* [Live **members.csv**](http://cs.mcgill.ca/~agarro/databases/members.csv)
+* [Live **log.csv**](http://cs.mcgill.ca/~agarro/databases/log.csv)
+* [Live **inventory.csv**](http://cs.mcgill.ca/~agarro/databases/inventory.csv)
 
 Outline:
 --------
@@ -71,3 +73,5 @@ Notes:
 * make sure everything works on alexi's cs public_html folder
 * tar,zip,submit
 * hope we get 100
+* [santiago] Add more entry space (login form and catalogue)
+* [santiago] Add Favicon 

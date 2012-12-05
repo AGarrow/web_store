@@ -29,7 +29,11 @@ class Purchase:
 			self.mid_price = 25
 			self.itemspurchased["midweight"] = mid_quantity
 		if form.has_key("heavy-purchase"):
+<<<<<<< HEAD:cgi_bin/Purchase.py
 			heavy_quantity = form["heavy-quantity"].value.strip()
+=======
+			self.heavy_quantity = form["heavy-quantity"].value.strip()
+>>>>>>> 015f212252faff85819526c921dc17f3190357e1:cgi_bin/Purchase.py
 			self.heavy_price = 30
 			self.itemspurchased["heavyweight"] = heavy_quantity
 
