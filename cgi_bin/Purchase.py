@@ -1,4 +1,4 @@
-i#!/usr/local/bin/python
+#!/usr/local/bin/python
 
 import cgi
 import os
@@ -29,13 +29,9 @@ class Purchase:
 			self.mid_price = 25
 			self.itemspurchased["midweight"] = mid_quantity
 		if form.has_key("heavy-purchase"):
-<<<<<<< HEAD:cgi_bin/Purchase.py
 			heavy_quantity = form["heavy-quantity"].value.strip()
-=======
-			self.heavy_quantity = form["heavy-quantity"].value.strip()
->>>>>>> 015f212252faff85819526c921dc17f3190357e1:cgi_bin/Purchase.py
 			self.heavy_price = 30
-			self.itemspurchased["heavyweight"] = heavy_quantity
+			if heavy_quantity != "0":self.itemspurchased["heavyweight"] = heavy_quantity
 
 	# We create a tuple to store the information
 	#self.temspurchased = {(id1, quantity1,price1), (id2, quantity2,price2), (id3,quantity3,price3), ("username", self.username)}
@@ -94,16 +90,17 @@ class Purchase:
 		
 		inventory_modified.close()
 
-
-
 	def appendLog(self):
-		#INPUT: self.itemspurchased from parseForm()
+		fn = os.path.abspath('..')+'/databases/Log.csv'
+		log = open(fn,'a')
 
-		fn = os.path.abspath('..') + '/databases/Log.csv'
-        	log = open(fn, 'a') #Make sure that "a" is the correct mode
-		log.write("%s" % self.itemspurchased)
+		logEntry = self.itemspurchased["username"]+","
+		for key,value in self.itemspurchased.items():
+			if key != "username": logEntry += key+","+value
+		logEntry+="\n"
+		log.write(logEntry)
+		log.close
 
-		log.close()
 
 
 
