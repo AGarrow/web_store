@@ -68,7 +68,7 @@ int main() {
   else if (input == '1'){
 
     printf("<html><head><title>Purchase History</title></head>\n");
-    printf("<body><p>Purchase History: (log.csv) </p>\n");
+    printf("<body><p>Purchase History: (log.csv) </p><br>\n");
 
     FILE *fp;
     char *line = NULL;
@@ -76,6 +76,8 @@ int main() {
     int counter = 0;
     ssize_t read;
     char logArray[20][50];
+    char purchaseLine[50];
+    char * junk;
 
     fp = fopen("../databases/log.csv", "r");
 
@@ -93,10 +95,38 @@ int main() {
 
       if (strstr(logArray[i],username)){
 
-        printf("%s's purchases are:",username); 
-      }
-    }
+        strcpy(purchaseLine,logArray[i]);
+        junk = strtok(purchaseLine,",");
+        junk = strtok(NULL,",");
+        
+        printf("Woah! You're a big spender, %s.<br><br>Damage done: %s$<br><br>",username,junk);
 
+        printf("Here's what you splurged on: <br><br>");
+
+        junk  = strtok(NULL,",");
+
+        while( junk != NULL)
+        {
+           printf("%s: ", junk);
+           junk = strtok(NULL,",");
+           printf("you got %s of them.<br>",junk);
+           junk = strtok(NULL,",");
+
+        }
+
+        printf("<br><br>");
+        printf("<a href=\"../home.html\">Home</a>   ");
+        printf("<a href=\"javascript:history.back()\">Go back to menu.</a>");
+        printf("</body></html>");
+
+        return;      
+      
+      }
+    
+    }
+    
+    printf("What are you waiting for? Go buy something!<br>");
+    printf("<br>");
     printf("<a href=\"../home.html\">Home</a>   ");
     printf("<a href=\"javascript:history.back()\">Go back to menu.</a>");
     printf("</body></html>");
