@@ -1,7 +1,7 @@
 COMP 206 FINAL ASSIGNMENT
 =========================
 
-Hanif Jetha (260205055), Alexander Garrow(enter your ID), Santiago Paiva (260477105)
+Hanif Jetha (260205055), Alexander Garrow(260465070), Santiago Paiva (260477105)
 
 Live links to site (on Alexi's public folder):
 -----------------------------------------------
