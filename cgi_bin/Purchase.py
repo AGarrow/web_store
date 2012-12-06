@@ -137,22 +137,24 @@ class Purchase:
 		self.total_before_tax = 0
 		if self.itemspurchased.has_key("lightweight"):
 			price =int(self.itemspurchased["lightweight"])*self.light_price
-			print "<tr><td>lightweight</td><td>"+str(self.itemspurchased["lightweight"])+"</td><td>$"+str(self.light_price)+"</td><td>"+str(price)+"</td></tr>"
+			print "<tr><td>lightweight</td><td>"+str(self.itemspurchased["lightweight"])+"</td><td>$"+str(self.light_price)+"</td><td>$"+str(price)+"</td></tr>"
 			self.total_before_tax += price
 		if self.itemspurchased.has_key("midweight"):
 			price =int(self.itemspurchased["midweight"])*self.mid_price
-			print "<tr><td>midweight</td><td>"+str(self.itemspurchased["midweight"])+"</td><td>$"+str(self.mid_price)+"</td><td>"+str(price)+"</td></tr>"
+			print "<tr><td>midweight</td><td>"+str(self.itemspurchased["midweight"])+"</td><td>$"+str(self.mid_price)+"</td><td>$"+str(price)+"</td></tr>"
 			self.total_before_tax += price
 		if self.itemspurchased.has_key("heavyweight"):
 			price =int(self.itemspurchased["heavyweight"])*self.heavy_price
-			print "<tr><td>heavyweight</td><td>"+str(self.itemspurchased["heavyweight"])+"</td><td>$"+str(self.heavy_price)+"</td><td>"+str(price)+"</td></tr>"
+			print "<tr><td>heavyweight</td><td>"+str(self.itemspurchased["heavyweight"])+"</td><td>$"+str(self.heavy_price)+"</td><td>$"+str(price)+"</td></tr>"
 			self.total_before_tax += price
 		gst = self.total_before_tax*0.05
 		pst = gst * 0.095
 		print "</table><ul>"
 		print "<li>GST: $"+str(gst)+"</li>"
 		print "<li>PST: $"+str(pst)+"</li>"
-		print "<li><strong>TOTAL:"+str(self.total_before_tax+gst+pst)+"</strong></li>"
+		print "<li><strong>TOTAL:$"+str(self.total_before_tax+gst+pst)+"</strong></li><br>"
+		print """  <li><a href="../pages/display_catalogue.py">Continue Shopping</a></li>
+		      <li><a href="../home.html">return to homepage</a></li>"""
 			
 		
 

@@ -30,7 +30,7 @@ def printTableHead():
 
 def printTableTail():
 	print """<input type = "text" name = "username" placeholder = "username" >"""
-	print """<input type = "text" name = "password" placeholder = "password" >"""
+	print """<input type = "password" name = "password" placeholder = "password" >"""
 	print """<input type = "submit" class = "btn btn-primary">"""
 	print "</form>"
 	print "</div>"		
