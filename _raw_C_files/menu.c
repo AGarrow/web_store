@@ -78,6 +78,8 @@ int main() {
     char logArray[20][50];
     char purchaseLine[50];
     char * junk;
+    int purchaseSwitch = 0;
+    char clearLine[50] = {0};
 
     fp = fopen("../databases/Log.csv", "r");
 
@@ -93,12 +95,14 @@ int main() {
 
     for (int i = 0; i < counter; i ++){
 
-      if (strstr(logArray[i],username)){
+      if (strstr(logArray[i],username) && purchaseSwitch == 0){
+
+        purchaseSwitch = 1;
 
         strcpy(purchaseLine,logArray[i]);
         junk = strtok(purchaseLine,",");
         junk = strtok(NULL,",");
-        
+
         printf("Woah! You're a big spender, %s.<br><br>Damage done: %s$<br><br>",username,junk);
 
         printf("Here's what you splurged on: <br><br>");
@@ -107,30 +111,65 @@ int main() {
 
         while( junk != NULL)
         {
-           printf("%s: ", junk);
-           junk = strtok(NULL,",");
-           printf("you got %s of them.<br>",junk);
-           junk = strtok(NULL,",");
+          printf("%s: ", junk);
+          junk = strtok(NULL,",");
+          printf("you got %s of them.<br>",junk);
+          junk = strtok(NULL,",");
 
         }
 
-        printf("<br><br>");
-        printf("<a href=\"../home.html\">Home</a>   ");
-        printf("<a href=\"javascript:history.back()\">Go back to menu.</a>");
-        printf("</body></html>");
+        strcpy(purchaseLine,clearLine);
 
-        return;      
-      
+        printf("<br><br>");
       }
-    
+
+      else if (strstr(logArray[i],username) && purchaseSwitch == 1){
+
+        printf("Damn! You really went crazy up in herr, here's another one of your purchases:<br><br>");
+
+        strcpy(purchaseLine,logArray[i]);
+        junk = strtok(purchaseLine,",");
+        junk = strtok(NULL,",");
+
+        printf("Damage done: %s$<br><br>",junk);
+
+        printf("Here's what you splurged on: <br><br>");
+
+        junk  = strtok(NULL,",");
+
+        while( junk != NULL)
+        {
+          printf("%s: ", junk);
+          junk = strtok(NULL,",");
+          printf("you got %s of them.<br>",junk);
+          junk = strtok(NULL,",");
+
+        }
+
+        strcpy(purchaseLine,clearLine);
+        printf("<br><br>");
+      }
+
+    } 
+
+    if(purchaseSwitch == 1){
+
+      printf("<a href=\"../home.html\">Home</a>   ");
+      printf("<a href=\"javascript:history.back()\">Go back to menu.</a>");
+      printf("</body></html>");
+
+      return;
     }
-    
+
+
     printf("What are you waiting for? Go buy something!<br>");
     printf("<br>");
     printf("<a href=\"../home.html\">Home</a>   ");
     printf("<a href=\"javascript:history.back()\">Go back to menu.</a>");
     printf("</body></html>");
+
   }
+
 
   //Access passweb.csv
   else if (input =='2'){
