@@ -26,8 +26,6 @@ a modified version of passweb from the last assignment
 
 `/_raw_C_files`: contains uncompiled c code, so you can see what's going on behind the scenes
 
-`/_raw_python`: contains copies of all the python stuff in the `/cgi-bin` folder, all in one place
-
 `/databases`: contains all our CSV "databases", including: `members.csv`, `log.csv`, and `inventory.csv`
 
 User Accounts:
