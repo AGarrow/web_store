@@ -67,6 +67,7 @@ def printItem(entry):
 	print "		</div>"
 	print """	<div class = "span2"><br/>"""
 	print "<h3>"+price+"/ride</h3>"
+	print "<h4>"+quantity+" remaining</h4>"
 	print """			<label class = "checkbox">Purchase?	"""				
 	print """				<input type = "checkbox" name ="""+checkName+"></label>"
 	print "			<label>Rides:</label>"				
@@ -85,7 +86,6 @@ printTableHead()
 for line in catalogue.readlines():
 	entry = line.split(',')
 	if int(entry[3]) != 0:
-		print "in stock"
 		printItem(entry)
 printTableTail()
 print "</body>"

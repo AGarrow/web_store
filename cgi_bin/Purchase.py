@@ -11,6 +11,7 @@ class Purchase:
 		self.light_price = ""
 		self.mid_price = ""
 		self.heavy_price = ""
+		self.total_before_tax = 0
 		self.itemspurchased = {}
 	
 	def parseForm(self, form):
@@ -33,8 +34,7 @@ class Purchase:
 			self.heavy_price = 30
 			if heavy_quantity != "0":self.itemspurchased["heavyweight"] = heavy_quantity
 
-	# We create a tuple to store the information
-	#self.temspurchased = {(id1, quantity1,price1), (id2, quantity2,price2), (id3,quantity3,price3), ("username", self.username)}
+	# we create a dict to store the order #["username":username,"lightweight":quantity,"midweight":quantity]
 
 		
 
@@ -57,44 +57,40 @@ class Purchase:
 
 		fn = os.path.abspath('..') + '/databases/Inventory.csv'
 		inventory = open(fn, "r")
+		lines = inventory.readlines()
+		inventory.close()
+		inventory = open(fn, "w")
+		inventory.close
+		inventory = open(fn,"a")
 
 		modified_list = []
-		quantity_in_stock = 0
-		for line in inventory.readlines():
+		for line in lines:
 			entry = line.split(',')
-			for items in self.itemspurchased:
-				if(items[0] == entry[0]):	
+			print "iterating"
+			print entry[1]
+			if entry[1].strip() in self.itemspurchased:
+				print "has key"
+				stock = int(entry[3])
+				purchased = int(self.itemspurchased(entry[1]))
+				if stock < purchased:
+					printQuantityError(stock)
+					inventory.write(line)
+				else:
+					newQuantity = stock-purchased
+					entry[3] = str(newQuantity)
+					print entry.join()
+					inventory.write(entry.join())
+			else:
+				inventory.write(line)
+					
+		inventory.close()
 
-					quantity_in_stock = int(entry[3])
- 
-					quantity_selected = items[1] 				
-
-					if quantity_selected > quantity_in_stock:
-						print "We only have " + quantity_in_stock + " rides left \n"
-						print "Please choose another quantity"
-						exit()
-					else:
-						quantity_in_stock = quantity_in_stock - quantity_selected
-						#quantity_and_price = (items[1], entry[4])					
-
-
-			modified_list.append("%s,%s,%s,%s,%s" % (entry[0], entry[1], entry[2], quantity_in_stock, entry[4]))
-
-		inventory.close() 
-
-		# Open file to write modified information
-		inventory_modified = open(fn, "w")
-	
-		for line in modified_list:
-			inventory_modified.write(line)
-		
-		inventory_modified.close()
 
 	def appendLog(self):
 		fn = os.path.abspath('..')+'/databases/Log.csv'
 		log = open(fn,'a')
 
-		logEntry = self.itemspurchased["username"]+","
+		logEntry = self.itemspurchased["username"]+","+str(self.total_before_tax)+","
 		for key,value in self.itemspurchased.items():
 			if key != "username": logEntry += key+","+value
 		logEntry+="\n"
@@ -134,7 +130,13 @@ class Purchase:
 		print "<p>the username and password you entered did not match our 		records</p>"
 		print"</div>"
 		print"</div>"
-
+	def printQuantityError(self, quantity):
+		print """<div class = "span12>
+			      <div class = "aler alert-block alert error">
+			      <h4> Sorry!</h4>
+			      <p>Sorry, but we only have"""+quantity+"""in stock!</p>
+			      </div></div>"""
+	
 	def printBill(self):
 		print """<div class ="span6 well" style = "float:none; margin:0 auto;">
 			     <h2> Your Bill:</h2>
@@ -143,25 +145,25 @@ class Purchase:
 				  "<th>Item</th><th>Quantity:</th><th>Price</th><th>due</th>"""
 			  	
 		# INPUT: self.itemspurchased from editInventory()
-		total_before_tax = 0
+		self.total_before_tax = 0
 		if self.itemspurchased.has_key("lightweight"):
 			price =int(self.itemspurchased["lightweight"])*self.light_price
-			print "<tr><td>lightweight</td><td>"+self.itemspurchased["lightweight"]+"</td><td>$"+self.light_price+"</td><td>"+price+"</td></tr>"
-			total_before_tax += price
+			print "<tr><td>lightweight</td><td>"+str(self.itemspurchased["lightweight"])+"</td><td>$"+str(self.light_price)+"</td><td>"+str(price)+"</td></tr>"
+			self.total_before_tax += price
 		if self.itemspurchased.has_key("midweight"):
-			price =self.itemspurchased["midweight"].value*self.mid_price
-			print "<tr><td>midweight</td><td>"+self.itemspurchased["midweight"]+"</td><td>$"+self.mid_price+"</td><td>"+price+"</td></tr>"
-			total_before_tax += price
+			price =int(self.itemspurchased["midweight"])*self.mid_price
+			print "<tr><td>midweight</td><td>"+str(self.itemspurchased["midweight"])+"</td><td>$"+str(self.mid_price)+"</td><td>"+str(price)+"</td></tr>"
+			self.total_before_tax += price
 		if self.itemspurchased.has_key("heavyweight"):
 			price =int(self.itemspurchased["heavyweight"])*self.heavy_price
 			print "<tr><td>heavyweight</td><td>"+str(self.itemspurchased["heavyweight"])+"</td><td>$"+str(self.heavy_price)+"</td><td>"+str(price)+"</td></tr>"
-			total_before_tax += price
-		gst = total_before_tax*0.05
+			self.total_before_tax += price
+		gst = self.total_before_tax*0.05
 		pst = gst * 0.095
 		print "</table>"
 		print "GST: $"+str(gst)
 		print "PST: $"+str(pst)
-		print "TOTAL:"+str(total_before_tax+gst+pst)
+		print "TOTAL:"+str(self.total_before_tax+gst+pst)
 			
 		
 
@@ -173,8 +175,8 @@ print "<body>"
 order.printMenu()
 if order.checkAccount():
 	order.editInventory()
-	order.appendLog()
 	order.printBill()
+	order.appendLog()
 else:
 	order.printError()
 print "</body>"
