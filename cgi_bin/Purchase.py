@@ -60,31 +60,26 @@ class Purchase:
 		lines = inventory.readlines()
 		inventory.close()
 		inventory = open(fn, "w")
-		inventory.close
-		inventory = open(fn,"a")
-
+		success = True
 		modified_list = []
 		for line in lines:
 			entry = line.split(',')
-			print "iterating"
-			print entry[1]
 			if entry[1].strip() in self.itemspurchased:
-				print "has key"
 				stock = int(entry[3])
-				purchased = int(self.itemspurchased(entry[1]))
+				purchased = int(self.itemspurchased[entry[1]])
 				if stock < purchased:
-					printQuantityError(stock)
 					inventory.write(line)
+					self.printQuantityError(stock)
+					success = False
 				else:
 					newQuantity = stock-purchased
 					entry[3] = str(newQuantity)
-					print entry.join()
-					inventory.write(entry.join())
+					inventory.write(','.join(entry))
 			else:
 				inventory.write(line)
 					
 		inventory.close()
-
+		return success
 
 	def appendLog(self):
 		fn = os.path.abspath('..')+'/databases/Log.csv'
@@ -92,7 +87,8 @@ class Purchase:
 
 		logEntry = self.itemspurchased["username"]+","+str(self.total_before_tax)+","
 		for key,value in self.itemspurchased.items():
-			if key != "username": logEntry += key+","+value
+			if key != "username": logEntry += key+","+value+","
+		logEntry = logEntry[:-1]
 		logEntry+="\n"
 		log.write(logEntry)
 		log.close
@@ -101,48 +97,41 @@ class Purchase:
 
 
 	def printHeader(self):
-		print "Content-type: text/html\n\n"
-		print "<html>\n"
-		print "<head>"
-		print """<link href = "../pages/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>"""
-		print """<link href = "../pages/css/custom.css" media = "all" rel="stylesheet" type="text/css">"""
-		print "</head>"
+		print """Content-type: text/html\n\n"
+		      <html>
+		      <head>
+			  <link href = "../pages/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>
+			  <link href = "../pages/css/custom.css" media = "all" rel="stylesheet" type="text/css">
+		      </head>"""
 
 	def printMenu(self):
-		print """<header class ="navbar navbar-fixed-top">"""
-		print """<div class = "navbar-inner">"""
-		print "<nav>"
-		print """<ul class = "nav pull-left">"""
-		print """<li><a href="../home.html">HOME<i class="icon-home"></i></a></li>"""
-		print "</ul>"
-		print """<ul class = "nav pull-right">"""
-		print """<li><a href="../pages/catalogue.html">Catalogue</a></li>"""
-		print """<li><a href="../pages/login.html" target="_blank">Login</a></li>"""
-		print "</ul>"
-		print "</nav>"
-		print "</div>"
-		print "</header>"
+		print """<header class ="navbar navbar-fixed-top">
+			    <div class = "navbar-inner">
+			      <nav>
+				 <ul class = "nav pull-left">
+				    <li><a href="../home.html">HOME<i class="icon-home"></i></a></li></ul>
+				 <ul class = "nav pull-right">
+				    <li><a href="../pages/display_catalogue.py">Catalogue</a></li>
+				    <li><a href="../pages/login.html" target="_blank">Login</a></li>
+				    </ul></nav></div></header>"""
 
 	def printError(self):
-		print """<div class = "span12">"""
-		print """<div class = "alert alert-block alert-error">"""
-		print "<h4>Oops!</h4>"
-		print "<p>the username and password you entered did not match our 		records</p>"
-		print"</div>"
-		print"</div>"
+		print """<div class = "span12">
+			  <div class = "alert alert-block alert-error">
+			    <h4>Oops!</h4>
+			    <p>the username and password you entered did not match our 		records</p></div></div>"""
 	def printQuantityError(self, quantity):
-		print """<div class = "span12>
-			      <div class = "aler alert-block alert error">
+		print """<div class = "span12">
+			      <div class = "alert alert-block alert error">
 			      <h4> Sorry!</h4>
-			      <p>Sorry, but we only have"""+quantity+"""in stock!</p>
-			      </div></div>"""
+			      <p>Sorry, but we only have """+str(quantity)+" in stock!</p></div></div>"
 	
 	def printBill(self):
 		print """<div class ="span6 well" style = "float:none; margin:0 auto;">
 			     <h2> Your Bill:</h2>
-			     <h4>"""+self.username+ """</h4>
+			     <h4>""" +self.username+ """</h4>
 			     <table class = "table table-striped">
-				  "<th>Item</th><th>Quantity:</th><th>Price</th><th>due</th>"""
+				  <th>Item</th><th>Quantity:</th><th>Price</th><th>due</th>"""
 			  	
 		# INPUT: self.itemspurchased from editInventory()
 		self.total_before_tax = 0
@@ -160,10 +149,10 @@ class Purchase:
 			self.total_before_tax += price
 		gst = self.total_before_tax*0.05
 		pst = gst * 0.095
-		print "</table>"
-		print "GST: $"+str(gst)
-		print "PST: $"+str(pst)
-		print "TOTAL:"+str(self.total_before_tax+gst+pst)
+		print "</table><ul>"
+		print "<li>GST: $"+str(gst)+"</li>"
+		print "<li>PST: $"+str(pst)+"</li>"
+		print "<li><strong>TOTAL:"+str(self.total_before_tax+gst+pst)+"</strong></li>"
 			
 		
 
@@ -174,9 +163,9 @@ order.printHeader()
 print "<body>"
 order.printMenu()
 if order.checkAccount():
-	order.editInventory()
-	order.printBill()
-	order.appendLog()
+	if order.editInventory():
+		order.printBill()
+		order.appendLog()
 else:
 	order.printError()
 print "</body>"
