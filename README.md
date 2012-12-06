@@ -14,7 +14,7 @@ Live links to site (on Alexi's public folder):
 
 * [Live **members.csv**](http://cs.mcgill.ca/~agarro/databases/members.csv)
 * [Live **log.csv**](http://cs.mcgill.ca/~agarro/databases/Log.csv)
-* [Live **inventory.csv**](http://cs.mcgill.ca/~agarro/databases/inventory.csv)
+* [Live **inventory.csv**](http://cs.mcgill.ca/~agarro/databases/Inventory.csv)
 
 Outline:
 --------
