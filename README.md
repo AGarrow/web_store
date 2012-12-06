@@ -13,7 +13,7 @@ Live links to site (on Alexi's public folder):
 ####Live Databases (found in Alexi's `public_html/databases/`):
 
 * [Live **members.csv**](http://cs.mcgill.ca/~agarro/databases/members.csv)
-* [Live **log.csv**](http://cs.mcgill.ca/~agarro/databases/log.csv)
+* [Live **log.csv**](http://cs.mcgill.ca/~agarro/databases/Log.csv)
 * [Live **inventory.csv**](http://cs.mcgill.ca/~agarro/databases/inventory.csv)
 
 Outline:
